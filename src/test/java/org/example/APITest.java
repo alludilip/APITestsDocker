@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
 
 public class APITest {
 
@@ -31,7 +30,6 @@ public class APITest {
                 assertThat().statusCode(200)
                 .extract().asString()
                 ;
-
         System.out.println("response is "+ responseData);
 
         JsonPath json = new JsonPath(responseData);
@@ -40,6 +38,7 @@ public class APITest {
     @Test
     public void getUsers() {
         RestAssured.baseURI = "https://reqres.in/";
+
         given()
                 .contentType(ContentType.JSON)
                 .when()
